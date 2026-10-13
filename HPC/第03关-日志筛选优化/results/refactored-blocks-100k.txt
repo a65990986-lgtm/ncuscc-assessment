@@ -1,0 +1,22 @@
+implementation=baseline threads=1 generator=v1 source=generated count=100000 sizeof_record=24 seed=2026 pattern=blocks requested_hit_percent=50 begin=1000 end=2000 min_latency=100 flags=3 warmup=1 repeats=20
+sample=0 core_ms=0.322093 matched=50000 check=PASS
+sample=1 core_ms=0.316111 matched=50000 check=PASS
+sample=2 core_ms=0.345708 matched=50000 check=PASS
+sample=3 core_ms=0.340957 matched=50000 check=PASS
+sample=4 core_ms=0.341448 matched=50000 check=PASS
+sample=5 core_ms=0.235321 matched=50000 check=PASS
+sample=6 core_ms=0.218475 matched=50000 check=PASS
+sample=7 core_ms=0.220373 matched=50000 check=PASS
+sample=8 core_ms=0.220281 matched=50000 check=PASS
+sample=9 core_ms=0.214568 matched=50000 check=PASS
+sample=10 core_ms=0.209224 matched=50000 check=PASS
+sample=11 core_ms=0.380179 matched=50000 check=PASS
+sample=12 core_ms=0.225148 matched=50000 check=PASS
+sample=13 core_ms=0.210081 matched=50000 check=PASS
+sample=14 core_ms=0.209701 matched=50000 check=PASS
+sample=15 core_ms=0.212439 matched=50000 check=PASS
+sample=16 core_ms=0.203552 matched=50000 check=PASS
+sample=17 core_ms=0.203225 matched=50000 check=PASS
+sample=18 core_ms=0.206043 matched=50000 check=PASS
+sample=19 core_ms=0.222796 matched=50000 check=PASS
+median_core_ms=0.220327 actual_hit_percent=50 input_Mrecords_per_s=453.8708374

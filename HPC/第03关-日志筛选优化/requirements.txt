@@ -1,0 +1,3 @@
+# 本关为 C++17 项目，无 Python 第三方依赖。
+# 边界测试脚本 test_boundary.py 仅使用 Python 标准库（subprocess / sys / pathlib）。
+# 运行测试需要 Python 3.8 或更高版本。
