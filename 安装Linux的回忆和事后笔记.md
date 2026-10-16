@@ -7,7 +7,7 @@
 
 # 一开始我是这样规划的,但是我发现完全不用这样,因为win11的盘默认是NTFS可以直接挂在在Linux的树上.
 分区	大小	文件系统	挂载点/用途
-共享杯子	100GB	NTFS	Windows/Linux 临时交换
+共享分区	100GB	NTFS	Windows/Linux 临时交换
 EFI 引导	1GB	FAT32	/boot/efi
 Swap	40GB	swap	休眠支持（32GB 内存）
 根目录	200GB	ext4	/
@@ -23,7 +23,7 @@ Swap	40GB	swap	休眠支持（32GB 内存）
 
 - 然后是使用连接去下载,尝试了清华大学镜像站(连接没了),阿里云镜像站(拒绝访问).随后又尝试了中科大（USTC）镜像站,南京大学（NJU）镜像站,网易（163）镜像站都没成功.
 
-) 随后尝试使用BT种子.使用迅雷完成了下载.那官方提供的哈希值对比,发现无误,说明每件没有被篡改过.
+) 随后尝试使用BT种子.使用迅雷完成了下载.拿官方提供的哈希值对比,发现无误,说明镜像没有被篡改过.
 
 然后就是备份u盘.用 Ventoy 制作启动盘.然后把前面的.iso文件拖进去.
 
@@ -35,9 +35,9 @@ Swap	40GB	swap	休眠支持（32GB 内存）
 
 > 到了" How do you want to install Ubuntu ? "就开始有坑了
 > 有三种安装选项:
-    > nstall Ubuntu alongside Windows Boot Manager（与 Windows 启动管理器共存）.据说可能会压缩现有的Win11的分区,然后自己切一块空间出来,很容易出问题.别选
-    > Erase disk and install Ubuntu（擦除磁盘并安装 Ubuntu）.清空选中的磁盘,然后自动分区.
-    > Manual installation（手动安装）.
+> Install Ubuntu alongside Windows Boot Manager（与 Windows 启动管理器共存）.据说可能会压缩现有的Win11的分区,然后自己切一块空间出来,很容易出问题.别选
+> Erase disk and install Ubuntu（擦除磁盘并安装 Ubuntu）.清空选中的磁盘,然后自动分区.
+> Manual installation（手动安装）.
 
 * 我当时选择了手动安装,然后出现了一个麻烦的问题.当创建第五个分区的时候总是显示System program problem detected（检测到系统程序问题）.
 
@@ -48,7 +48,7 @@ Swap	40GB	swap	休眠支持（32GB 内存）
 
 然后回到安装界面发现Linux的一个特性:硬盘的名字是会变的,原来是nvme0n1,可能变成nvme1n1
 
-顺带一提,Linux支持NTFS,但是为了避免跟微软的授权费,所以不会在安装界面直接提供NTFS
+顺带一提,Linux支持NTFS,但是为了避免跟微软的授权费,所以不会在安装界面直接提供NTFS.但是也有说法是NTFS 存不了 POSIX 的属主、权限位和符号链接，没法当 Linux 的根文件系统用。它拿来当数据盘是可以的.linux本身是可以用NTFS格式的.
 
 - 现在可以创建5个盘了,但是那个1.13 GB，FAT32的幽灵分区就是去不掉,我打算不要了.可是 next 就是不让点,是灰色的.
 - 反反复复重启试了很多次,就是有幽灵分区,而且也不给我next
@@ -74,7 +74,7 @@ Software & Updates界面.找到 Download from（下载自），把它改成 中�
 * 按 Ctrl + Alt + F3，进入黑底白字的 tty3 界面,输入用户名和密码
 * sudo nano /etc/gdm3/custom.conf用这个配置编辑文件
 * 在打开的文本里，找到这一行：#WaylandEnable=false , 把它前面的 # 号删掉，变成 WaylandEnable=false .意思是永久禁用 Wayland，只用 Xorg
-* nano的退出方式,是按 Ctrl + O 然后按 Enter 保存
+* nano的退出方式,是按 Ctrl + O 然后按 Enter 保存,Ctrl + X 退出
 * reboot重启电脑确保生效
 
 
