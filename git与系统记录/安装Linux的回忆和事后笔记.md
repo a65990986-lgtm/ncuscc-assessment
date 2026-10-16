@@ -5,7 +5,7 @@
 
 - 我有两块硬盘,一块是西部数据的(win11专用),一块是致态(Linux专用).此外我有一个小米u盘来作为启动盘
 
-# 一开始我是这样规划的,但是我发现完全不用这样,因为win11的盘默认是NTFS可以直接挂在在Linux的树上.
+一开始我是这样规划的,但是我发现完全不用这样,因为win11的盘默认是NTFS可以直接挂在在Linux的树上.
 分区	大小	文件系统	挂载点/用途
 共享分区	100GB	NTFS	Windows/Linux 临时交换
 EFI 引导	1GB	FAT32	/boot/efi
@@ -78,7 +78,7 @@ Software & Updates界面.找到 Download from（下载自），把它改成 中�
 * reboot重启电脑确保生效
 
 
- # 设置默认启动为 Linux，用 GRUB 菜单切换
+设置默认启动为 Linux，用 GRUB 菜单切换
 >进入 BIOS 设置（开机按 F2 或 Del，看机型）。
 >找到“启动顺序”或“Boot Priority”，把 致态2T（Ubuntu） 调到第一位。
 >保存退出。以后每次开机，默认从致态2T启动，会先进入 GRUB 菜单。

@@ -168,7 +168,7 @@ blocked 分块则是**把要用的数据重新排成连续的**（打包）：
 ### 3.3 gemm-256-naive 的标准差说明了什么
 
 `gemm-256-naive` 的标准差是 **0.90 ms**，而它的中位数才 **6.57 ms**——波动约 **14%**。
-对比 `blocked` 的标准差只有 **0.04 ms**（约 0.8%），两者差了近 18 倍。
+对比 `blocked` 的标准差只有 **0.04 ms**（约 0.8%），两者差了 22 倍（按标准差之比）。
 
 看原始样本就明白了：
 
@@ -294,7 +294,7 @@ SIMD（单指令多数据）指用**向量寄存器**一次处理多个数（如
 - 实测 `-O3` 相对 `-O2` 已经把有效带宽从 15.0 提到 **31.8 GB/s**，
   GFLOP/s 从 11.27 提到 23.85——**这正是向量化带来的收益**
 - 但这台机器单核可用的内存带宽上限大约在 60~90 GB/s 量级，
-  所以理论上还有约 **2 倍**空间
+  所以理论上还有约 **1.9~2.8 倍**空间（取决于上限取 60 还是 90 GB/s）
 - **不可能达到 4~8 倍**（向量寄存器宽度），因为 SIMD 加快的是"算"，
   而本程序的瓶颈在"搬"
 
@@ -389,11 +389,11 @@ SIMD（单指令多数据）指用**向量寄存器**一次处理多个数（如
 **stencil 1024×1024，20 步，row**（`-O2`）：
 
 ```
-sample=0 compute_ms=9.60912
-sample=1 compute_ms=9.62249
-sample=2 compute_ms=9.85365
-sample=3 compute_ms=9.78097
-sample=4 compute_ms=9.85433
+sample=0 compute_ms=10.3731
+sample=1 compute_ms=10.4059
+sample=2 compute_ms=9.7056
+sample=3 compute_ms=9.6044
+sample=4 compute_ms=9.70361
 mean_ms=9.95852  median_ms=9.7056  stddev_ms=0.353938
 GFLOP/s=12.914  effective_bandwidth_GB/s=17.2187
 ```
@@ -401,13 +401,13 @@ GFLOP/s=12.914  effective_bandwidth_GB/s=17.2187
 **stencil 512×512，20 步，column**（`-O2`）：
 
 ```
-sample=0 compute_ms=13.74
-sample=1 compute_ms=13.8959
-sample=2 compute_ms=13.8186
-sample=3 compute_ms=13.5204
-sample=4 compute_ms=13.6013
-mean_ms=13.7152  median_ms=13.74  stddev_ms=0.137757
-GFLOP/s=2.27161  effective_bandwidth_GB/s=3.02881
+sample=0 compute_ms=12.8366
+sample=1 compute_ms=12.7819
+sample=2 compute_ms=12.724
+sample=3 compute_ms=12.8008
+sample=4 compute_ms=12.6026
+mean_ms=12.7492  median_ms=12.7819  stddev_ms=0.0818577
+GFLOP/s=2.44189  effective_bandwidth_GB/s=3.25585
 ```
 
 **gemm N=256，naive，tile=64**：

@@ -38,7 +38,8 @@
       test_public.py         组织者提供的公开测试
       test_boundary.py       新增边界测试
     results/                 原始测量数据（每组 10~20 次样本）
-    HPC第三关报告.md          实验报告
+    第03关-日志筛选优化/
+      HPC3报告.md             实验报告
     TASK.md                  组织者提供的任务说明
     report-template.md       组织者提供的报告模板
     generate_logs.py         组织者提供
